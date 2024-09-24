@@ -1,10 +1,10 @@
 resource "tls_private_key" "pk" {
-    algorithm = "ED25519"
+    algorithm = "RSA"
 }
 
 resource "aws_key_pair" "kp" {
-    key_name   = "workstation-kauecode-config"
-    public_key = file("/home/kauemendes/keys/workstation-kauecode-config/key.pub")
+    key_name   = "workstation-kauecode-1-config"
+    public_key = file("/home/kauemendes/keys/workstation-kauecode-config/rsa-key.pub")
 }
 
 resource "local_file" "private_key_pem" {

@@ -7,7 +7,7 @@ variable "keyfolder" {
 variable "keyname" {
     description = "Name of the pem key file"
     type        = string
-    default     = "workstation-kauecode"
+    default     = "workstation-kauecode-1"
 }
 
 variable "ssh_pub_key_path" {
