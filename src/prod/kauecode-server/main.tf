@@ -16,6 +16,10 @@ module "networking" {
   availability_zones   = "${local.production_availability_zones}"
 }
 
+module "keypair" {
+  source = "./modules/ssh-keypair"
+}
+
 locals {
     project_name = "kauecode"
     key_name = "kauecode-sshkey-1"
@@ -27,7 +31,7 @@ resource "aws_instance" "kauecode-server" {
   instance_type = "t2.micro"
   subnet_id     = "${module.networking.public_subnet_id}"
   availability_zone = "sa-east-1a"
-  key_name      = "${local.key_name}"
+  key_name      = "${module.keypair.key_name}"
   tags = {
     Name = "${local.project_name}-server"
   }
